@@ -9,6 +9,15 @@ html, body {
   user-select: none; /* Standard syntax */
 }
 
+.title {
+  color: white;
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2vw;
+  margin-bottom: 3vw;
+}
+
 .questions-container {
   width: 100%;
   display: flex;
@@ -79,4 +88,24 @@ label + input[type=radio] + label {
   margin-bottom: 2vw;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.clear-button {
+  transition: 0.3s all;
+  width: 10vw;
+  height: 3vw;
+  border: 3px solid #675f6b;
+  border-radius: 10px;
+  margin: auto;
+  line-height: 3vw;
+  text-align: center;
+  color: #675f6b;
+  font-size: 1.5vw;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clear-button:hover {
+  border: 3px solid white;
+  color: white;
 }
