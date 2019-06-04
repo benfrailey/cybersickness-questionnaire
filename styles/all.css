@@ -114,6 +114,10 @@ label + input[type=radio] + label {
   cursor: pointer;
 }
 
+.debug {
+  color: white;
+}
+
 .clear-button:hover {
   border: 3px solid white;
   color: white;

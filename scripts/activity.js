@@ -10,11 +10,15 @@ $( document ).ready(function() {
   function allAnswered() {
     var allAnswered = true;
     $("form").each(function() {
-        console.log($(this).serialize());
         if ($(this).serialize() == "") {
           allAnswered = false;
         }
     });
+    var arr = [];
+    $('input[type="radio"]:checked').each(function(){
+       arr.push($(this).val());
+    });
+    $(".debug").html(arr);
     return allAnswered;
   }
 
