@@ -2,6 +2,8 @@
 //Autosave answers?
 //Finish Button
 
+let correct_answers = ["211111113311", "211111111111", "332332232111", "111111111111", "332232233321", "111111111111"];
+
 $( document ).ready(function() {
 
   var maxClips = 5;
@@ -78,5 +80,36 @@ $( document ).ready(function() {
     }
   });
 
+  let CheckAnswers = function(answers){
+    let results = new Array();
+    for(i = 0; i < correct_answers.length; i++){
+      let results_page = new Array();
+      for(b = 0; b < correct_answers[i].length; b++){
+        if(correct_answers[i][b] == answers[i][b]){
+          results_page.push(1);
+        }
+        else{
+          results_page.push(0);
+        }
+      }
+      results.push(results_page);
+    }
+    return results;
+  };
+
+
+  let UpdateAnswers = function(results, answers, correct_answers){
+    for(i = 0; i < results.length; i++){
+      for(b = 0; b < results[i].length; b++){
+        if(results[i][b] == 1){
+          document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).foo();
+        }
+        else{
+          document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).foowrong();
+          document.getElementById("q" + (i+1).toString() + "-option-" + correct_[currentClip-1][i].toString()).foo()
+        }
+      }
+    }
+  }
 
 });
