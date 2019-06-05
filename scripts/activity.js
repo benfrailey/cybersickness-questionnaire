@@ -1,6 +1,6 @@
 //ToDo
-//Clean up answer function
 //Autosave answers?
+//Finish Button
 
 $( document ).ready(function() {
 
@@ -41,24 +41,14 @@ $( document ).ready(function() {
       clearAnswers();
       $(".next-button").hide();
 
-      let page_answer = document.getElementsByClassName('debug');
-      answers[currentClip-2] = ($(page_answer).html());
+      answers[currentClip-2] = ($(document.getElementsByClassName('debug')).html());
 
       if(typeof answers[currentClip-1] != "undefined"){
-        let questions = document.getElementsByClassName("radio-group");
-        for(i = 0; i < questions.length; i++){
-          if(answers[currentClip-1][i] == 1){
-            document.getElementById("q" + (i+1).toString() + "-option-one").click();
-          }
-          if(answers[currentClip-1][i] == 2){
-            document.getElementById("q" + (i+1).toString() + "-option-two").click();
-          }
-          if(answers[currentClip-1][i] == 3){
-            document.getElementById("q" + (i+1).toString() + "-option-three").click();
-          }
+        for(i = 0; i < document.getElementsByClassName("radio-group").length; i++){
+          document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
         }
       }
-  }
+    }
   });
 
   $(".back-button").click(function() {
@@ -70,22 +60,9 @@ $( document ).ready(function() {
       if (currentClip == 1) {
         $(".back-button").hide();
       }
-      //This needs to be all shortened and cleaned up. There's a better way to do this besides hardcoding.
-      let page_answer = document.getElementsByClassName('debug');
-      $(page_answer).html(answers[currentClip-1]);
 
-      let questions = document.getElementsByClassName("radio-group");
-      for(i = 0; i < questions.length; i++){
-
-        if(answers[currentClip-1][i] == 1){
-          document.getElementById("q" + (i+1).toString() + "-option-one").click();
-        }
-        if(answers[currentClip-1][i] == 2){
-          document.getElementById("q" + (i+1).toString() + "-option-two").click();
-        }
-        if(answers[currentClip-1][i] == 3){
-          document.getElementById("q" + (i+1).toString() + "-option-three").click();
-        }
+      for(i = 0; i < document.getElementsByClassName("radio-group").length; i++){
+        document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
       }
     }
 });
