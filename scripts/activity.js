@@ -52,6 +52,10 @@ $( document ).ready(function() {
           document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
         }
       }
+
+      if (currentClip == maxClips && allAnswered()) {
+        $(".submit-button").show();
+      }
     }
   });
 
@@ -60,6 +64,7 @@ $( document ).ready(function() {
       currentClip -= 1;
       $(".previous-clip-number").html(currentClip - 1);
       $(".clip-number").html(currentClip);
+      $(".clip-name").html(titles[currentClip - 1]);
       $(".next-clip-number").html(currentClip + 1);
       if (currentClip == 1) {
         $(".back-button").hide();
@@ -68,6 +73,7 @@ $( document ).ready(function() {
       for(i = 0; i < document.getElementsByClassName("radio-group").length; i++){
         document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
       }
+      $(".submit-button").hide();
     }
 });
 
