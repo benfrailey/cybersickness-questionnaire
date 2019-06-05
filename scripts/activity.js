@@ -41,8 +41,8 @@ $( document ).ready(function() {
       clearAnswers();
       $(".next-button").hide();
 
-      let answer = document.getElementsByClassName('debug');
-      answers[currentClip-2] = ($(answer).html());
+      let page_answer = document.getElementsByClassName('debug');
+      answers[currentClip-2] = ($(page_answer).html());
 
       if(typeof answers[currentClip-1] != "undefined"){
         let questions = document.getElementsByClassName("radio-group");
@@ -71,11 +71,12 @@ $( document ).ready(function() {
         $(".back-button").hide();
       }
       //This needs to be all shortened and cleaned up. There's a better way to do this besides hardcoding.
-      let answer = document.getElementsByClassName('debug');
-      $(answer).html(answers[currentClip-1]);
+      let page_answer = document.getElementsByClassName('debug');
+      $(page_answer).html(answers[currentClip-1]);
 
       let questions = document.getElementsByClassName("radio-group");
       for(i = 0; i < questions.length; i++){
+
         if(answers[currentClip-1][i] == 1){
           document.getElementById("q" + (i+1).toString() + "-option-one").click();
         }
