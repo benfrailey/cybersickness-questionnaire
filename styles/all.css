@@ -182,3 +182,29 @@ label + input[type=radio] + label {
   bottom: 1vw;
   left: 0vw;
 }
+
+.form-container {
+  position: relative;
+}
+
+.checkmark {
+  display: none;
+  position: absolute;
+  width: 10vw;
+  height: 5vw;
+  background-image: url("../images/checkmark.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cross {
+  display: none;
+  position: absolute;
+  width: 10vw;
+  height: 5vw;
+  background-image: url("../images/cross.png");
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

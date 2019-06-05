@@ -6,9 +6,12 @@ let correct_answers = ["211111113311", "211111111111", "332332232111", "11111111
 
 $( document ).ready(function() {
 
-  var maxClips = 5;
+  var maxClips = 6;
   var currentClip = 1;
   let answers = new Array();
+  var titles = ["Scenario 1 - Clip 1", "Scenario 1 - Clip 2",
+                "Scenario 2 - Clip 1", "Scenario 2 - Clip 2",
+                "Scenario 3 - Clip 1", "Scenario 3 - Clip 2"]
 
   function clearAnswers() {
     $("input").prop('checked', false);
@@ -38,6 +41,7 @@ $( document ).ready(function() {
       currentClip += 1;
       $(".previous-clip-number").html(currentClip - 1);
       $(".clip-number").html(currentClip);
+      $(".clip-name").html(titles[currentClip - 1]);
       $(".next-clip-number").html(currentClip + 1);
       $(".back-button").show();
       clearAnswers();
@@ -50,6 +54,10 @@ $( document ).ready(function() {
           document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
         }
       }
+
+      if (currentClip == maxClips && allAnswered()) {
+        $(".submit-button").show();
+      }
     }
   });
 
@@ -58,6 +66,7 @@ $( document ).ready(function() {
       currentClip -= 1;
       $(".previous-clip-number").html(currentClip - 1);
       $(".clip-number").html(currentClip);
+      $(".clip-name").html(titles[currentClip - 1]);
       $(".next-clip-number").html(currentClip + 1);
       if (currentClip == 1) {
         $(".back-button").hide();
@@ -66,6 +75,7 @@ $( document ).ready(function() {
       for(i = 0; i < document.getElementsByClassName("radio-group").length; i++){
         document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
       }
+      $(".submit-button").hide();
     }
 });
 
