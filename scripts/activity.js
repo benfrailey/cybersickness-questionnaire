@@ -1,7 +1,12 @@
+//ToDo
+//Clean up answer function
+//Autosave answers?
+
 $( document ).ready(function() {
 
   var maxClips = 5;
   var currentClip = 1;
+  let answers = new Array();
 
   function clearAnswers() {
     $("input").prop('checked', false);
@@ -35,7 +40,25 @@ $( document ).ready(function() {
       $(".back-button").show();
       clearAnswers();
       $(".next-button").hide();
-    }
+
+      let answer = document.getElementsByClassName('debug');
+      answers[currentClip-2] = ($(answer).html());
+
+      if(typeof answers[currentClip-1] != "undefined"){
+        let questions = document.getElementsByClassName("radio-group");
+        for(i = 0; i < questions.length; i++){
+          if(answers[currentClip-1][i] == 1){
+            document.getElementById("q" + (i+1).toString() + "-option-one").click();
+          }
+          if(answers[currentClip-1][i] == 2){
+            document.getElementById("q" + (i+1).toString() + "-option-two").click();
+          }
+          if(answers[currentClip-1][i] == 3){
+            document.getElementById("q" + (i+1).toString() + "-option-three").click();
+          }
+        }
+      }
+  }
   });
 
   $(".back-button").click(function() {
@@ -47,8 +70,24 @@ $( document ).ready(function() {
       if (currentClip == 1) {
         $(".back-button").hide();
       }
+      //This needs to be all shortened and cleaned up. There's a better way to do this besides hardcoding.
+      let answer = document.getElementsByClassName('debug');
+      $(answer).html(answers[currentClip-1]);
+
+      let questions = document.getElementsByClassName("radio-group");
+      for(i = 0; i < questions.length; i++){
+        if(answers[currentClip-1][i] == 1){
+          document.getElementById("q" + (i+1).toString() + "-option-one").click();
+        }
+        if(answers[currentClip-1][i] == 2){
+          document.getElementById("q" + (i+1).toString() + "-option-two").click();
+        }
+        if(answers[currentClip-1][i] == 3){
+          document.getElementById("q" + (i+1).toString() + "-option-three").click();
+        }
+      }
     }
-  });
+});
 
   $('input').on('change', function() {
     if (allAnswered()) {
