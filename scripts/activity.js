@@ -4,9 +4,12 @@
 
 $( document ).ready(function() {
 
-  var maxClips = 5;
+  var maxClips = 6;
   var currentClip = 1;
   let answers = new Array();
+  var titles = ["Scenario 1 - Clip 1", "Scenario 1 - Clip 2",
+                "Scenario 2 - Clip 1", "Scenario 2 - Clip 2",
+                "Scenario 3 - Clip 1", "Scenario 3 - Clip 2"]
 
   function clearAnswers() {
     $("input").prop('checked', false);
@@ -36,6 +39,7 @@ $( document ).ready(function() {
       currentClip += 1;
       $(".previous-clip-number").html(currentClip - 1);
       $(".clip-number").html(currentClip);
+      $(".clip-name").html(titles[currentClip - 1]);
       $(".next-clip-number").html(currentClip + 1);
       $(".back-button").show();
       clearAnswers();
