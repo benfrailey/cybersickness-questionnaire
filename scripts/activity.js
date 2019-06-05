@@ -1,11 +1,13 @@
 //ToDo
 //Autosave answers?
 //Finish Button
+  //Green outline
+  //Correcting / locking answers
 
-let correct_answers = ["211111113311", "211111111111", "332332232111", "111111111111", "332232233321", "111111111111"];
 
 $( document ).ready(function() {
-
+  let correct_answers = ["211111113311", "211111111111", "332332232111", "111111111111", "332232233321", "111111111111"];
+  let submit = false;
   var maxClips = 6;
   var currentClip = 1;
   let answers = new Array();
@@ -57,7 +59,12 @@ $( document ).ready(function() {
 
       if (currentClip == maxClips && allAnswered()) {
         $(".submit-button").show();
+        $(".next-button").hide();
       }
+    }
+
+    if(submit){
+      UpdateAnswers(CheckAnswers(currentClip-1, answers));
     }
   });
 
@@ -71,12 +78,17 @@ $( document ).ready(function() {
       if (currentClip == 1) {
         $(".back-button").hide();
       }
+      if(submit && currentClip != maxClips){
+        $(".next-button").show();
+      }
 
       for(i = 0; i < document.getElementsByClassName("radio-group").length; i++){
         document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).click()
       }
       $(".submit-button").hide();
     }
+
+    if(submit){UpdateAnswers(CheckAnswers(currentClip-1, answers), currentClip-1);}
 });
 
   $('input').on('change', function() {
@@ -90,36 +102,35 @@ $( document ).ready(function() {
     }
   });
 
-  let CheckAnswers = function(answers){
-    let results = new Array();
-    for(i = 0; i < correct_answers.length; i++){
-      let results_page = new Array();
-      for(b = 0; b < correct_answers[i].length; b++){
-        if(correct_answers[i][b] == answers[i][b]){
-          results_page.push(1);
-        }
-        else{
-          results_page.push(0);
-        }
-      }
-      results.push(results_page);
+  $(".submit-button").click(function(){
+    submit = true;
+    answers[currentClip-1] = ($(document.getElementsByClassName('debug')).html());
+    UpdateAnswers(CheckAnswers(currentClip-1, answers), currentClip-1);
+  });
+
+  let CheckAnswers = function(index){
+    let results = "";
+    for(let i = 0; i < correct_answers[index].length; i++){
+      if(correct_answers[index][i] == answers[index][i]){results += "1";}
+      else{results += "0";}
     }
     return results;
   };
 
-
-  let UpdateAnswers = function(results, answers, correct_answers){
-    for(i = 0; i < results.length; i++){
-      for(b = 0; b < results[i].length; b++){
-        if(results[i][b] == 1){
-          document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).foo();
-        }
-        else{
-          document.getElementById("q" + (i+1).toString() + "-option-" + answers[currentClip-1][i].toString()).foowrong();
-          document.getElementById("q" + (i+1).toString() + "-option-" + correct_[currentClip-1][i].toString()).foo()
-        }
+  let UpdateAnswers = function(results, index){
+    for(let i = 0; i < document.getElementsByClassName("checkmark").length; i++){$(document.getElementsByClassName("checkmark")[i]).hide()}
+    for(let i = 0; i < document.getElementsByClassName("cross").length; i++){$(document.getElementsByClassName("cross")[i]).hide()}
+    for(let i = 0; i < results.length; i++){
+      if(results[i] == 1){
+        $(document.getElementsByClassName("checkmark")[i]).show();
+        //document.getElementById("q" + (i+1).toString() + "-option-" + answers[index][i].toString()).foo();
+      }
+      else{
+        $(document.getElementsByClassName("cross")[i]).show();
+        //document.getElementById("q" + (i+1).toString() + "-option-" + answers[index][i].toString()).foowrong();
+        //document.getElementById("q" + (i+1).toString() + "-option-" + correct_answers[index][i].toString()).foo()
       }
     }
-  }
+  };
 
 });
