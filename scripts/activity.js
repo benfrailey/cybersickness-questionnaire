@@ -3,6 +3,7 @@
 //Finish Button
   //Green outline
   //Correcting / locking answers
+  //Fixing new answers. Next and submit answers
 
 
 $( document ).ready(function() {
