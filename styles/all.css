@@ -76,6 +76,7 @@ label {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
+  font-size: 2.5vw;
   width: 6vw;
   height: 3vw;
   line-height: 3vw;
@@ -88,18 +89,37 @@ input[type=radio]:checked + label {
 }
 
 label + input[type=radio] + label {
-  border-left: solid 3px #675f6b;
+  border-left: solid .3vw #675f6b;
 }
 
 .radio-group {
-  border: solid 3px #675f6b;
+  border: solid .3vw #675f6b;
   display: inline-block;
   margin-top: 1vw;
   margin-bottom: 2vw;
   border-radius: 10px;
   overflow: hidden;
-    text-align: center;
+  text-align: center;
 }
+
+
+#submitButton{
+  border: solid .3vw #675f6b;
+  display: inline-block;
+  margin-top: 3vw;
+  margin-bottom: 2vw;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #332f35;
+  cursor: pointer;
+  color: #9a929e;
+  width: 31.8vw;
+/*  height: 3.6vw;*/
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+
 
 .clear-button {
   transition: 0.3s all;
@@ -211,13 +231,11 @@ label + input[type=radio] + label {
   background-position: center;
 }
 
-#submitButton{
-    border: solid 3px #675f6b;
-  display: inline-block;
-  margin-top: 1vw;
-  margin-bottom: 2vw;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-    color: #675f6b;
+#submitButton:hover{
+  color: #ccc8ce;
+  background: #675f6b;
+}
+
+#submitButton:focus{
+  outline: none;
 }
