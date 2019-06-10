@@ -1,7 +1,9 @@
 $( document ).ready(function() {
 
+  $("#submitButton").hide();
+
   if(allAnswered()){
-    $(".submit-button").show();
+    $("#submitButton").show();
   }
 
   function clearAnswers() {
@@ -29,15 +31,15 @@ $( document ).ready(function() {
 
   $('input').on('change', function() {
     if (allAnswered()) {
-      $(".submit-button").show();
+      $("#submitButton").show();
     }
   });
 
-  $(".submit-button").click(function(){
+  $("#submitButton").click(function(){
     let answers = ($(document.getElementsByClassName('debug')).html());
     console.log(answers);
     window.location.href = "index2.html";
-    return answers; //storing answers
+    return answers; //storing answers? Probably need PHP
   });
 
 });
