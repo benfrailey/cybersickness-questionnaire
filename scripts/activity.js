@@ -2,6 +2,8 @@ $( document ).ready(function() {
 
   $("#submitButton").hide();
 
+  $("#nextButton").hide();
+
   if(allAnswered()){
     $("#submitButton").show();
   }
@@ -27,6 +29,7 @@ $( document ).ready(function() {
 
   $(".clear-button").click(function() {
     clearAnswers();
+    $("#nextButton").hide();
     $("#submitButton").hide();
   });
 
