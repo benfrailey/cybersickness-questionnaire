@@ -27,6 +27,7 @@ $( document ).ready(function() {
 
   $(".clear-button").click(function() {
     clearAnswers();
+    $("#submitButton").hide();
   });
 
   $('input').on('change', function() {
