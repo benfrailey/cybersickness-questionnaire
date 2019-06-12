@@ -31,8 +31,16 @@ $( document ).ready(function() {
 
   $('input').on('change', function() {
     if (allAnswered()) {
+      $("#nextButton").show();
       $("#submitButton").show();
     }
+  });
+
+  $("#nextButton").click(function(){
+    let answers = ($(document.getElementsByClassName('debug')).html());
+    console.log(answers);
+    window.location.href = "ui-questions.html";
+    return answers; //storing answers? Probably need PHP
   });
 
   $("#submitButton").click(function(){

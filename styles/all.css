@@ -96,7 +96,7 @@ label + input[type=radio] + label {
 }
 
 
-#submitButton{
+#submitButton, #nextButton{
   transition: 0.3s all;
   border: solid .3vw #675f6b;
   display: inline-block;
@@ -136,7 +136,7 @@ label + input[type=radio] + label {
   color: white;
 }
 
-#submitButton:hover {
+#submitButton:hover, #nextButton:hover {
   border: 3px solid white;
   color: white;
 }
@@ -145,6 +145,6 @@ label + input[type=radio] + label {
   position: relative;
 }
 
-#submitButton:focus{
+#submitButton:focus, #nextButton:focus {
   outline: none;
 }
